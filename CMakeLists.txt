@@ -624,11 +624,13 @@ endif()
 
 # set the INSTALL_NAME_DIR (currently used on OS X) for present targets
 if (TARGET psmoveapi)
-  set_target_properties(psmoveapi PROPERTIES INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${PSMOVEAPI_LIB_DEST})
+  set_target_properties(psmoveapi PROPERTIES 
+    INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${PSMOVEAPI_LIB_DEST})
 endif ()
 
 if (TARGET psmoveapi_tracker)
-  set_target_properties(psmoveapi_tracker PROPERTIES INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${PSMOVEAPI_LIB_DEST})
+  set_target_properties(psmoveapi_tracker PROPERTIES 
+    INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${PSMOVEAPI_LIB_DEST})
 endif ()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/contrib/psmoveapi.pc.in
