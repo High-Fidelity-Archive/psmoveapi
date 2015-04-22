@@ -146,11 +146,15 @@ if (PSMOVE_USE_LOCAL_OPENCV)
     endif()
 
     link_directories(${OPENCV_BUILD_DIR}/lib)
-    link_directories(${OPENCV_BUILD_DIR}/3rdparty/lib)
+    link_directories(${OPENCV_BUILD_DIR}/3rdparty/lib)    
+
+    foreach(OPENCV_MODULE core imgproc highgui)
+      include_directories(${OPENCV_SRC_DIR}/modules/${OPENCV_MODULE}/include) 
+      
+      # install the required OpenCV headers
+      install(FILES ${OPENCV_SRC_DIR}/modules/${OPENCV_MODULE}/include DESTINATION include)
+    endforeach() 
     
-    include_directories(${OPENCV_SRC_DIR}/modules/core/include)
-    include_directories(${OPENCV_SRC_DIR}/modules/imgproc/include)
-    include_directories(${OPENCV_SRC_DIR}/modules/highgui/include)
     set(PSMOVE_BUILD_TRACKER ON)
     set(INFO_BUILD_TRACKER "Yes (with local OpenCV)")
 
